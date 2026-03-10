@@ -1,0 +1,39 @@
+# Name des Workflows, wie er in GitHub angezeigt wird
+name: GitHub Actions Demo
+
+# Name des aktuellen Runs, zeigt den GitHub-Benutzer an, der den Workflow auslöst
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+# Definiert, wann der Workflow ausgelöst wird (hier: bei jedem Push)
+on: [push]
+
+jobs:
+  # Name des Jobs
+  explore-github-actions:
+    # Gibt an, auf welchem Betriebssystem der Job ausgeführt wird
+    runs-on: ubuntu-latest
+    steps:
+      # Schritt 1: Gibt das Event aus, das den Workflow ausgelöst hat
+      - name: Display trigger event
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      # Schritt 2: Zeigt Informationen über den Runner (Server), auf dem der Job läuft
+      - name: Show runner information
+        run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      # Schritt 3: Zeigt den Namen des Branches und des Repositories an
+      - name: Show branch and repository info
+        run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      # Schritt 4: Checkt den Code des Repositories aus (lädt ihn auf den Runner)
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      # Schritt 5: Bestätigt, dass das Repository geklont wurde
+      - name: Confirm repository cloned
+        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      # Schritt 6: Gibt an, dass der Workflow bereit ist, den Code zu testen
+      - name: Ready to test code
+        run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      # Schritt 7: Listet alle Dateien im Arbeitsverzeichnis des Repositories auf
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
+      # Schritt 8: Zeigt den Status des Jobs an
+      - name: Show job status
+        run: echo "🍏 This job's status is ${{ job.status }}."
