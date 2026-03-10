@@ -1,4 +1,4 @@
-# Name des Workflows, wie er in GitHub angezeigt wird
+# Name des Workflows, wie er in GitHub angezeigt wird.
 name: GitHub Actions Demo
 
 # Name des aktuellen Runs, zeigt den GitHub-Benutzer an, der den Workflow auslöst
